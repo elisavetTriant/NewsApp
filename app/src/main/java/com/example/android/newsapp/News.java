@@ -31,7 +31,7 @@ public class News {
      * @param webTitle is the Title of the news entry
      * @param url is the Url of the news entry
      * @param webPublicationDate is the Publication date of the news entry in Javascript format
-     * @param contributors is the list of contributors of the news entry
+     * @param contributors is the list of contributors of the news entry ()
      */
     public News(String sectionName, String webTitle, String url, String webPublicationDate, ArrayList<String> contributors) {
         nSectionName = sectionName;

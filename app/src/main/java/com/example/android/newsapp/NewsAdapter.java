@@ -12,12 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
 
 
 /**
@@ -64,12 +60,10 @@ public class NewsAdapter extends ArrayAdapter<News> {
         TextView sectionView = (TextView) listItemView.findViewById(R.id.section);
         sectionView.setText(currentNews.getSectionName());
 
-        // Create a new Date object from the time in milliseconds of the article
-        //Date dateObject = new Date(currentNews.getWebPublicationDate());
+
         // Find the TextView with view ID date
         TextView dateView = (TextView) listItemView.findViewById(R.id.publication_date);
-        // Format the date string
-         //String formattedDate = formatDate(dateObject);
+
         // Display the date of the current news item in that TextView
         String publicationDate =  currentNews.getWebPublicationDate();
         if ( publicationDate == null || publicationDate.length() == 0) {
@@ -84,7 +78,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
         String contributors = formatContributors(currentNews.getContributors());
 
-        if ( contributors == null || contributors.length() == 0) {
+        if ( contributors.length() == 0) {
             contributorsView.setVisibility(View.GONE);
         } else {
             contributorsView.setText(contributors);
@@ -95,19 +89,6 @@ public class NewsAdapter extends ArrayAdapter<News> {
         return listItemView;
     }
 
-    /**
-     * Return the formatted date string (i.e. "Mar 3, 2017 - 3:45 AM GMT") from a String object.
-     * (convert from Javascript DATETIME format to this format "Mar 3, 2017 - 3:45 AM GMT")
-     */
-
-    /*private String formatPublicationDate(String webPublicationDate){
-
-        SimpleDateFormat format = new SimpleDateFormat(
-                "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault());
-        format.setTimeZone(TimeZone.getTimeZone("GMT"));
-
-        Date date = format.parse(webPublicationDate);
-    }*/
 
     //https://stackoverflow.com/questions/599161/best-way-to-convert-an-arraylist-to-a-string
     private String formatContributors(ArrayList<String> contributors){
