@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="settings_use_date_labels">
+        <item>@string/settings_use_date_published_label</item>
+        <item>@string/settings_use_date_first_publication_label</item>
+        <item>@string/settings_use_date_newspaper_edition_label</item>
+        <item>@string/settings_use_date_last_modified_label</item>
+    </string-array>
+
+    <string-array name="settings_use_date_values">
+        <item>@string/settings_use_date_published_value</item>
+        <item>@string/settings_use_date_first_publication_value</item>
+        <item>@string/settings_use_date_newspaper_edition_value</item>
+        <item>@string/settings_use_date_last_modified_value</item>
+    </string-array>
+
+    <string-array name="settings_section_labels">
+        <item>@string/settings_section_books_label</item>
+        <item>@string/settings_section_business_label</item>
+        <item>@string/settings_section_cities_label</item>
+        <item>@string/settings_section_opinion_label</item>
+        <item>@string/settings_section_community_label</item>
+        <item>@string/settings_section_culture_label</item>
+        <item>@string/settings_section_education_label</item>
+        <item>@string/settings_section_environment_label</item>
+        <item>@string/settings_section_fashion_label</item>
+        <item>@string/settings_section_film_label</item>
+        <item>@string/settings_section_lifeandstyle_label</item>
+        <item>@string/settings_section_music_label</item>
+        <item>@string/settings_section_politics_label</item>
+        <item>@string/settings_section_science_label</item>
+        <item>@string/settings_section_society_label</item>
+        <item>@string/settings_section_sport_label</item>
+        <item>@string/settings_section_technology_label</item>
+        <item>@string/settings_section_travel_label</item>
+        <item>@string/settings_section_womeninleadership_label</item>
+        <item>@string/settings_section_world_label</item>
+    </string-array>
+
+    <string-array name="settings_section_values">
+        <item>@string/settings_section_books_value</item>
+        <item>@string/settings_section_business_value</item>
+        <item>@string/settings_section_cities_value</item>
+        <item>@string/settings_section_opinion_value</item>
+        <item>@string/settings_section_community_value</item>
+        <item>@string/settings_section_culture_value</item>
+        <item>@string/settings_section_education_value</item>
+        <item>@string/settings_section_environment_value</item>
+        <item>@string/settings_section_fashion_value</item>
+        <item>@string/settings_section_film_value</item>
+        <item>@string/settings_section_lifeandstyle_value</item>
+        <item>@string/settings_section_music_value</item>
+        <item>@string/settings_section_politics_value</item>
+        <item>@string/settings_section_science_value</item>
+        <item>@string/settings_section_society_value</item>
+        <item>@string/settings_section_sport_value</item>
+        <item>@string/settings_section_technology_value</item>
+        <item>@string/settings_section_travel_value</item>
+        <item>@string/settings_section_womeninleadership_value</item>
+        <item>@string/settings_section_world_value</item>
+    </string-array>
+</resources>

@@ -2,23 +2,31 @@ package com.example.android.newsapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements LoaderManager.LoaderCallbacks<List<News>> {
+
+    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?";
 
     /**
      * Constant value for the news loader ID. We can choose any integer.
@@ -65,8 +73,12 @@ public class MainActivity extends AppCompatActivity
                 // Create a new intent to view the current news article URI
                 Intent websiteIntent = new Intent(Intent.ACTION_VIEW, articleUri);
 
-                // Send the intent to launch a new activity
-                startActivity(websiteIntent);
+                if (websiteIntent.resolveActivity(getPackageManager()) != null) {
+                    // Send the intent to launch a new activity
+                    startActivity(websiteIntent);
+                }else {
+                    Toast.makeText(getApplicationContext(), getString(R.string.no_browser_detected), Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -99,11 +111,41 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public Loader<List<News>> onCreateLoader(int i, Bundle bundle) {
-        /** URL for the news App data from the GUARDIAN data set */
-        String guardian_request_url =
-                "https://content.guardianapis.com/search?q=science&from-date=2017-01-01&page-size=50&show-tags=contributor&use-date=last-modified&api-key=" + getString(R.string.guardian_api_key);
-        // Create a new loader for the given URL
-        return new NewsLoader(this, guardian_request_url);
+
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        // getString retrieves a String value from the preferences. The second parameter is the default value for this preference.
+        String pageSize = sharedPrefs.getString(
+                getString(R.string.settings_page_size_key),
+                getString(R.string.settings_page_size_default));
+
+        String useDate = sharedPrefs.getString(
+                getString(R.string.settings_use_date_key),
+                getString(R.string.settings_use_date_default)
+        );
+
+        String section = sharedPrefs.getString(
+                getString(R.string.settings_section_key),
+                getString(R.string.settings_section_default)
+        );
+
+        // parse breaks apart the URI string that's passed into its parameter
+        Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
+
+        // buildUpon prepares the baseUri that we just parsed so we can add query parameters to it
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+
+        // Append query parameters and its values.
+        uriBuilder.appendQueryParameter("q", section);
+        uriBuilder.appendQueryParameter("page-size", pageSize);
+        uriBuilder.appendQueryParameter("show-tags", "contributor");
+        uriBuilder.appendQueryParameter("use-date", useDate);
+        uriBuilder.appendQueryParameter("api-key", getString(R.string.guardian_api_key));
+
+        //Message to reviewer: I leave this here in order to check the full query
+        Log.i("MainActivity", "Url: " + uriBuilder.toString());
+
+        return new NewsLoader(this, uriBuilder.toString());
     }
 
     @Override
@@ -114,7 +156,6 @@ public class MainActivity extends AppCompatActivity
 
         // Set empty state text to display "They are no articles on your feed."
         mEmptyStateTextView.setText(R.string.no_articles_to_show);
-
 
         // If there is a valid list of {@link News}, then add them to the adapter's
         // data set. This will trigger the ListView to update.
@@ -127,5 +168,24 @@ public class MainActivity extends AppCompatActivity
     public void onLoaderReset(Loader<List<News>> loader) {
         // Loader reset, so we can clear out our existing data.
         mAdapter.clear();
+    }
+
+    @Override
+    // This method initialize the contents of the Activity's options menu
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    // This method is called whenever an item in the options menu is selected.
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

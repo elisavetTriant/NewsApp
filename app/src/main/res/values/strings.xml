@@ -2,12 +2,104 @@
     <string name="app_name">News App</string>
     <string name="no_internet_connection">No internet connection! Please turn on your WI-FI or your Data, in order to see your feed.</string>
     <string name="no_articles_to_show">They are no articles on your feed. Please check that you queried the Guardian API properly. Also check that you have provided a valid Guardian API key.</string>
+    <string name="no_browser_detected">Tapping on the list item opens the article\'s web page but you don\'t seem to have a browser installed!</string>
+
+    <string name="settings_menu_item">Settings</string>
+    <string name="settings_title">News Settings</string>
+    <!-- Strings For Page Size Preference [CHAR LIMIT=30] -->
+    <string name="settings_page_size_label">Page Size</string>
+    <string name="settings_page_size_key" translatable="false">page-size</string>
+    <string name="settings_page_size_default" translatable="false">10</string>
+
+    <!-- Strings For Use Date Preference [CHAR LIMIT=30] -->
+    <string name="settings_use_date_label">Use Date</string>
+    <string name="settings_use_date_key" translatable="false">use_date</string>
+    <string name="settings_use_date_default" translatable="false">@string/settings_use_date_published_value</string>
+    <!-- Label for use_date published option [CHAR LIMIT=20] -->
+    <string name="settings_use_date_published_label">Published</string>
+    <string name="settings_use_date_published_value" translatable="false">published</string>
+    <!-- Label for use_date first publication option [CHAR LIMIT=20] -->
+    <string name="settings_use_date_first_publication_label">First Publication</string>
+    <string name="settings_use_date_first_publication_value" translatable="false">first-publication</string>
+    <!-- Label for use_date newspaper edition option [CHAR LIMIT=20] -->
+    <string name="settings_use_date_newspaper_edition_label">Newspaper Edition</string>
+    <string name="settings_use_date_newspaper_edition_value" translatable="false">newspaper-edition</string>
+    <!-- Label for use_date last modified option [CHAR LIMIT=20] -->
+    <string name="settings_use_date_last_modified_label">Last Modified</string>
+    <string name="settings_use_date_last_modified_value" translatable="false">last-modified</string>
+
+    <!-- Strings For Section Preference [CHAR LIMIT=30] -->
+    <string name="settings_section_label">Section</string>
+    <string name="settings_section_key" translatable="false">section</string>
+    <string name="settings_section_default" translatable="false">@string/settings_section_books_value</string>
+
+    <!-- Label for section books option [CHAR LIMIT=20] -->
+    <string name="settings_section_books_label">Books</string>
+    <string name="settings_section_books_value" translatable="false">books</string>
+    <!-- Label for section business option [CHAR LIMIT=20] -->
+    <string name="settings_section_business_label">Business</string>
+    <string name="settings_section_business_value" translatable="false">business</string>
+    <!-- Label for section cities option [CHAR LIMIT=20] -->
+    <string name="settings_section_cities_label">Cities</string>
+    <string name="settings_section_cities_value" translatable="false">cities</string>
+    <!-- Label for section Opinion option [CHAR LIMIT=20] -->
+    <string name="settings_section_opinion_label">Opinion</string>
+    <string name="settings_section_opinion_value" translatable="false">commentisfree</string>
+    <!-- Label for section Community option [CHAR LIMIT=20] -->
+    <string name="settings_section_community_label">Community</string>
+    <string name="settings_section_community_value" translatable="false">community</string>
+    <!-- Label for section Culture option [CHAR LIMIT=20] -->
+    <string name="settings_section_culture_label">Culture</string>
+    <string name="settings_section_culture_value" translatable="false">culture</string>
+    <!-- Label for section Education option [CHAR LIMIT=20] -->
+    <string name="settings_section_education_label">Education</string>
+    <string name="settings_section_education_value" translatable="false">education</string>
+    <!-- Label for section Environment option [CHAR LIMIT=20] -->
+    <string name="settings_section_environment_label">Environment</string>
+    <string name="settings_section_environment_value" translatable="false">environment</string>
+    <!-- Label for section Fashion option [CHAR LIMIT=20] -->
+    <string name="settings_section_fashion_label">Fashion</string>
+    <string name="settings_section_fashion_value" translatable="false">fashion</string>
+    <!-- Label for section Film option [CHAR LIMIT=20] -->
+    <string name="settings_section_film_label">Film</string>
+    <string name="settings_section_film_value" translatable="false">film</string>
+    <!-- Label for section Life and style option [CHAR LIMIT=20] -->
+    <string name="settings_section_lifeandstyle_label">Life and style</string>
+    <string name="settings_section_lifeandstyle_value" translatable="false">lifeandstyle</string>
+    <!-- Label for section Music option [CHAR LIMIT=20] -->
+    <string name="settings_section_music_label">Music</string>
+    <string name="settings_section_music_value" translatable="false">music</string>
+    <!-- Label for section Politics option [CHAR LIMIT=20] -->
+    <string name="settings_section_politics_label">Politics</string>
+    <string name="settings_section_politics_value" translatable="false">politics</string>
+    <!-- Label for section Science option [CHAR LIMIT=20] -->
+    <string name="settings_section_science_label">Science</string>
+    <string name="settings_section_science_value" translatable="false">science</string>
+    <!-- Label for section Society option [CHAR LIMIT=20] -->
+    <string name="settings_section_society_label">Society</string>
+    <string name="settings_section_society_value" translatable="false">society</string>
+    <!-- Label for section Sport option [CHAR LIMIT=20] -->
+    <string name="settings_section_sport_label">Sport</string>
+    <string name="settings_section_sport_value" translatable="false">sport</string>
+    <!-- Label for section Technology option [CHAR LIMIT=20] -->
+    <string name="settings_section_technology_label">Technology</string>
+    <string name="settings_section_technology_value" translatable="false">technology</string>
+    <!-- Label for section Travel option [CHAR LIMIT=20] -->
+    <string name="settings_section_travel_label">Travel</string>
+    <string name="settings_section_travel_value" translatable="false">travel</string>
+    <!-- Label for section Women in Leadership option [CHAR LIMIT=20] -->
+    <string name="settings_section_womeninleadership_label">Women in Leadership</string>
+    <string name="settings_section_womeninleadership_value" translatable="false">women-in-leadership</string>
+    <!-- Label for section World news option [CHAR LIMIT=20] -->
+    <string name="settings_section_world_label">World news</string>
+    <string name="settings_section_world_value" translatable="false">world</string>
+
     <!--
         *   TODO: Before you run your application, you need a Guardian API key.
         *
         *   To get one, follow this link and follow the directions to obtain your API key:
         *   https://open-platform.theguardian.com/access/
         -->
-    <string name="guardian_api_key">test</string>
+    <string name="guardian_api_key">f50de1f0-dc79-475a-bd66-28c5e7e086ea</string>
 
 </resources>

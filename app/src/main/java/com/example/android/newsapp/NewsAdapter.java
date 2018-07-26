@@ -5,6 +5,7 @@ package com.example.android.newsapp;
  */
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,13 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 
 /**
@@ -65,7 +71,8 @@ public class NewsAdapter extends ArrayAdapter<News> {
         TextView dateView = (TextView) listItemView.findViewById(R.id.publication_date);
 
         // Display the date of the current news item in that TextView
-        String publicationDate =  currentNews.getWebPublicationDate();
+        String publicationDate =  formatDate(currentNews.getWebPublicationDate());
+
         if ( publicationDate == null || publicationDate.length() == 0) {
             dateView.setVisibility(View.GONE);
         } else{
@@ -89,6 +96,22 @@ public class NewsAdapter extends ArrayAdapter<News> {
         return listItemView;
     }
 
+    //https://stackoverflow.com/questions/10649782/java-cannot-format-given-object-as-a-date/10649834#10649834
+    private String formatDate(String inputDateString){
+
+        DateFormat outputFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm", Locale.UK);
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.UK);
+
+        String outputDate = inputDateString;
+
+        try{
+            Date date = inputFormat.parse(inputDateString);
+            outputDate = outputFormat.format(date);
+        }catch (ParseException e) {
+            Log.e("NEWS_ADAPTER", "Problem parsing the publication date", e);
+        }
+        return outputDate;
+    }
 
     //https://stackoverflow.com/questions/599161/best-way-to-convert-an-arraylist-to-a-string
     private String formatContributors(ArrayList<String> contributors){
